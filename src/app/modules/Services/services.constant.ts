@@ -1,4 +1,4 @@
-import { TServiceCategory } from './Services.interface';
+import { TServiceCategory } from './services.interface';
 
 export const SERVICE_CATEGORIES: TServiceCategory[] = [
   'Admission',

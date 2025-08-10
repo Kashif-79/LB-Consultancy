@@ -1,23 +1,16 @@
 import { Schema, model } from 'mongoose';
-import { TService } from './Services.interface';
+import { TService } from './services.interface';
 import { SERVICE_CATEGORIES } from './services.constant';
 
 const serviceSchema = new Schema<TService>(
   {
-    name: {
+    name: SERVICE_CATEGORIES,
+    definition: {
       type: String,
-      required: true,
     },
-    description: { type: String },
-    category: SERVICE_CATEGORIES,
-    price: { type: Number },
-    duration: { type: String }, // e.g., "1 hour"
-    consultants: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Consultant',
-      },
-    ],
+    description: {
+      type: String,
+    },
     isActive: {
       type: Boolean,
       default: true,

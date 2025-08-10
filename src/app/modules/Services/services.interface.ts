@@ -7,11 +7,8 @@ export type TServiceCategory =
   | 'Interview Coaching';
 
 export type TService = {
-  name: string;
+  name: TServiceCategory;
+  definition: string;
   description: string;
-  category: TServiceCategory;
-  price?: number;
-  duration?: string; // e.g., "1 hour", "30 mins"
-  consultants?: string[]; // Array of Consultant IDs
   isActive?: boolean;
 };
