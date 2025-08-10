@@ -8,3 +8,4 @@ export const SERVICE_CATEGORIES: TServiceCategory[] = [
   'Document Review',
   'Interview Coaching',
 ];
+export const serviceSearchableFields = ['name'];

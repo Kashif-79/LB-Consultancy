@@ -15,12 +15,13 @@ const createServices = catchAsync(async (req, res) => {
 });
 
 const getAllServices = catchAsync(async (req, res) => {
-  const result = await ServicesService.getAllServicesFromDB();
+  const result = await ServicesService.getAllServicesFromDB(req.query);
   sendResponse(res, {
     statusCode: 200,
     success: true,
     message: 'Services is retrived successfully',
-    data: result,
+    meta: result.meta,
+    data: result.result,
   });
 });
 const getSingleService = catchAsync(async (req, res) => {
