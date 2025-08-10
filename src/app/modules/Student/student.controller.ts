@@ -4,12 +4,13 @@ import sendResponse from '../../utilis/sendResponse';
 import catchAsync from '../../utilis/catchAsync';
 
 const getAllStudents = catchAsync(async (req, res) => {
-  const result = await StudentServices.getAllStudentsFromDB();
+  const result = await StudentServices.getAllStudentsFromDB(req.query);
   sendResponse(res, {
     statusCode: 200,
     success: true,
     message: 'Student is retrived successfully',
-    data: result,
+    meta: result.meta,
+    data: result.result,
   });
 });
 const getSingleStudent = catchAsync(async (req, res) => {

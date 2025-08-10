@@ -5,13 +5,14 @@ import { ConsultantServices } from './consultant.service';
 import { get } from 'http';
 
 const getAllConsultants = catchAsync(async (req, res) => {
-  const result = await ConsultantServices.getAllConsultantsFromDB();
+  const result = await ConsultantServices.getAllConsultantsFromDB(req.query);
 
   sendResponse(res, {
     statusCode: status.OK,
     success: true,
     message: 'Consultants are retrieved successfully',
-    data: result,
+    meta: result.meta,
+    data: result.result,
   });
 });
 

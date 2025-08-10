@@ -1,11 +1,23 @@
-import { TStudent } from './student.interface';
+import QueryBuilder from '../../../builder/QueryBuilder';
+import { studentSearchableFields } from './student.constant';
 import { Student } from './student.model';
 
-const getAllStudentsFromDB = async () => {
-  const result = await Student.find();
-  return result;
-};
+const getAllStudentsFromDB = async (query: Record<string, unknown>) => {
+  const studentQuery = new QueryBuilder(Student.find().populate('user'), query)
+    .search(studentSearchableFields)
+    .filter()
+    .sort()
+    .paginate()
+    .fields();
 
+  const meta = await studentQuery.countTotal();
+  const result = await studentQuery.modelQuery;
+
+  return {
+    meta,
+    result,
+  };
+};
 const getSingleStudentFromDB = async (id: string) => {
   const result = await Student.findById(id);
   return result;

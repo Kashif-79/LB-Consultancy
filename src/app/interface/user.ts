@@ -1,4 +1,5 @@
 import { Schema } from 'mongoose';
+import { USER_ROLE } from '../modules/user/user.constant';
 
 export type TUserName = {
   firstName: string;
@@ -37,3 +38,4 @@ export type TBloodGroup =
   | 'AB+'
   | 'AB-';
 export type TGender = 'male' | 'female' | 'other';
+export type TUserRole = keyof typeof USER_ROLE;

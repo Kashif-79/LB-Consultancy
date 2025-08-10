@@ -1,9 +1,26 @@
+import QueryBuilder from '../../../builder/QueryBuilder';
+import { consultantSearchableFields } from './consulatant.constant';
 import { TConsultant } from './consultant.interface';
 import { Consultant } from './consultant.model';
 
-const getAllConsultantsFromDB = async () => {
-  const result = await Consultant.find();
-  return result;
+const getAllConsultantsFromDB = async (query: Record<string, unknown>) => {
+  const consultantQuery = new QueryBuilder(
+    Consultant.find().populate('user'),
+    query,
+  )
+    .search(consultantSearchableFields)
+    .filter()
+    .sort()
+    .paginate()
+    .fields();
+
+  const meta = await consultantQuery.countTotal();
+  const result = await consultantQuery.modelQuery;
+
+  return {
+    meta,
+    result,
+  };
 };
 const getSingleConsultantFromDB = async (id: string) => {
   const result = await Consultant.findById(id);

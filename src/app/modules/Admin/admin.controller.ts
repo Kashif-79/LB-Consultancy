@@ -4,13 +4,15 @@ import sendResponse from '../../utilis/sendResponse';
 import { AdminServices } from './admin.service';
 
 const getAllAdmins = catchAsync(async (req, res) => {
-  const result = await AdminServices.getAllAdminsFromDB();
+  console.log(req.cookies);
+  const result = await AdminServices.getAllAdminsFromDB(req.query);
 
   sendResponse(res, {
     statusCode: status.OK,
     success: true,
     message: 'Admin is retrived successfully',
-    data: result,
+    meta: result.meta,
+    data: result.result,
   });
 });
 

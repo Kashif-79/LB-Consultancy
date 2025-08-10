@@ -1,9 +1,23 @@
+import QueryBuilder from '../../../builder/QueryBuilder';
+import { adminSearchableFields } from './admin.constant';
 import { TAdmin } from './admin.interface';
 import { Admin } from './admin.model';
 
-const getAllAdminsFromDB = async () => {
-  const result = await Admin.find();
-  return result;
+const getAllAdminsFromDB = async (query: Record<string, unknown>) => {
+  const adminQuery = new QueryBuilder(Admin.find().populate('user'), query)
+    .search(adminSearchableFields)
+    .filter()
+    .sort()
+    .paginate()
+    .fields();
+
+  const meta = await adminQuery.countTotal();
+  const result = await adminQuery.modelQuery;
+
+  return {
+    meta,
+    result,
+  };
 };
 const getSingleAdminFromDB = async (id: string) => {
   const result = await Admin.findById(id);

@@ -15,13 +15,6 @@ const userSchema = new Schema<TUser>(
       required: true,
       select: 0,
     },
-    needsPasswordChange: {
-      type: Boolean,
-      default: true,
-    },
-    passwordChangeAt: {
-      type: Date,
-    },
     role: {
       type: String,
       enum: ['admin', 'student', 'consultant'],
