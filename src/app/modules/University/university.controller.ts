@@ -4,9 +4,8 @@ import sendResponse from '../../utilis/sendResponse';
 import { UniversityServices } from './university.service';
 
 const createUniversity = catchAsync(async (req, res) => {
-  const { university: universityData } = req.body;
-  const result =
-    await UniversityServices.createUniversityIntoDB(universityData);
+  // const { university: universityData } = req.body;
+  const result = await UniversityServices.createUniversityIntoDB(req.body);
   sendResponse(res, {
     statusCode: status.OK,
     success: true,
@@ -16,12 +15,13 @@ const createUniversity = catchAsync(async (req, res) => {
 });
 
 const getAllUniversities = catchAsync(async (req, res) => {
-  const result = await UniversityServices.getAllUniversitiessFromDB();
+  const result = await UniversityServices.getAllUniversitiessFromDB(req.query);
   sendResponse(res, {
     statusCode: 200,
     success: true,
     message: 'Universities are retrived successfully',
-    data: result,
+    meta: result.meta,
+    data: result.result,
   });
 });
 const getSingleUniversity = catchAsync(async (req, res) => {

@@ -10,7 +10,6 @@ const universitySchema = new Schema<TUniversity>(
     },
     country: {
       type: Schema.Types.ObjectId,
-      required: true,
       ref: 'Country',
     },
     website: {
@@ -28,21 +27,10 @@ const universitySchema = new Schema<TUniversity>(
       default: true,
     },
     tuitionFees: {
-      currency: {
-        type: String,
-        trim: true,
-      },
-      min: {
-        type: Number,
-        min: 0,
-      },
-      max: {
-        type: Number,
-        min: 0,
-      },
+      type: Number,
     },
     programs: {
-      type: String,
+      type: [String],
       required: true,
       enum: ['UG', 'PG', 'PHD', 'Diploma'],
     },

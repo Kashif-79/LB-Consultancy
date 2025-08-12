@@ -15,12 +15,13 @@ const createCountry = catchAsync(async (req, res) => {
 });
 
 const getAllCountries = catchAsync(async (req, res) => {
-  const result = await CountryService.getAllCountriesFromDB();
+  const result = await CountryService.getAllCountriesFromDB(req.query);
   sendResponse(res, {
     statusCode: status.OK,
     success: true,
     message: 'Countries is retrived successfully',
-    data: result,
+    meta: result.meta,
+    data: result.result,
   });
 });
 const getSingleCountry = catchAsync(async (req, res) => {

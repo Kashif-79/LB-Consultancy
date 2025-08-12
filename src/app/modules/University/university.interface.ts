@@ -5,13 +5,9 @@ export type TProgrames = 'UG' | 'PG' | 'PHD ' | 'Diploma';
 export type TUniversity = {
   name: string;
   country: Types.ObjectId;
-  website: string;
+  website?: string;
   ranking?: number;
-  admissionOpen: boolean;
-  tuitionFees: {
-    currency?: string;
-    min?: number;
-    max?: number;
-  };
-  programs: TProgrames;
+  admissionOpen?: boolean;
+  tuitionFees?: number;
+  programs: TProgrames[];
 };
