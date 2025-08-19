@@ -47,68 +47,65 @@ const createStudentValidationSchema = z.object({
       presentAddress: z.string().min(1, 'Present address is required'),
       permanentAddress: z.string().min(1, 'Permanent address is required'),
       guardian: createGuardianValidationSchema,
-      localGaurdian: createLocalGuardianValidationSchema,
+      localGuardian: createLocalGuardianValidationSchema,
     }),
   }),
 });
-// const updateUserNameValidationSchema = z.object({
-//   firstName: z
-//     .string()
-//     .trim()
-//     .optional()
-//     .refine(
-//       (value) =>
-//         !value || value.charAt(0).toUpperCase() + value.slice(1) === value,
-//       {
-//         message: 'First letter must be uppercase',
-//       },
-//     ),
-//   middleName: z.string().trim().optional(),
-//   lastName: z.string().trim().optional(),
-// });
+const updateUserNameValidationSchema = z.object({
+  firstName: z
+    .string()
+    .trim()
+    .optional()
+    .refine(
+      (value) =>
+        !value || value.charAt(0).toUpperCase() + value.slice(1) === value,
+      {
+        message: 'First letter must be uppercase',
+      },
+    ),
+  middleName: z.string().trim().optional(),
+  lastName: z.string().trim().optional(),
+});
 
-// const updateGuardianValidationSchema = z.object({
-//   fatherName: z.string().trim().optional(),
-//   fatherOccupation: z.string().optional(),
-//   fatherContactNo: z.string().trim().optional(),
-//   motherName: z.string().trim().optional(),
-//   motherOccupation: z.string().optional(),
-//   motherContactNo: z.string().trim().optional(),
-// });
+const updateGuardianValidationSchema = z.object({
+  fatherName: z.string().trim().optional(),
+  fatherOccupation: z.string().optional(),
+  fatherContactNo: z.string().trim().optional(),
+  motherName: z.string().trim().optional(),
+  motherOccupation: z.string().optional(),
+  motherContactNo: z.string().trim().optional(),
+});
 
-// const updateLocalGuardianValidationSchema = z.object({
-//   name: z.string().trim().optional(),
-//   occupation: z.string().optional(),
-//   contactNo: z.string().trim().optional(),
-//   address: z.string().optional(),
-// });
+const updateLocalGuardianValidationSchema = z.object({
+  name: z.string().trim().optional(),
+  occupation: z.string().optional(),
+  contactNo: z.string().trim().optional(),
+  address: z.string().optional(),
+});
 
-// const updateStudentValidationSchema = z.object({
-//   body: z.object({
-//     student: z
-//       .object({
-//         name: updateUserNameValidationSchema,
-//         gender: z.enum(['male', 'female']).optional(),
-//         dateOfBirth: z.string().optional(),
-//         email: z.string().email('Invalid email format').optional(),
-//         contactNo: z.string().optional(),
-//         emergencyContactNo: z.string().optional(),
-//         bloodGroup: z
-//           .enum(['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'])
-//           .optional(),
-//         presentAddress: z.string().optional(),
-//         permanentAddress: z.string().optional(),
-//         guardian: updateGuardianValidationSchema.optional(),
-//         localGaurdian: updateLocalGuardianValidationSchema.optional(),
-//         admissionSemester: z.string().optional(),
-//         profileImg: z.string().optional(),
-//         academicDepartment: z.string().optional(),
-//       })
-//       .partial(),
-//   }),
-// });
+const updateStudentValidationSchema = z.object({
+  body: z.object({
+    student: z
+      .object({
+        name: updateUserNameValidationSchema,
+        gender: z.enum(['male', 'female']).optional(),
+        dateOfBirth: z.string().optional(),
+        email: z.string().email('Invalid email format').optional(),
+        contactNo: z.string().optional(),
+        emergencyContactNo: z.string().optional(),
+        bloodGroup: z
+          .enum(['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'])
+          .optional(),
+        presentAddress: z.string().optional(),
+        permanentAddress: z.string().optional(),
+        guardian: updateGuardianValidationSchema.optional(),
+        localGuardian: updateLocalGuardianValidationSchema.optional(),
+      })
+      .partial(),
+  }),
+});
 
 export const studentValidations = {
   createStudentValidationSchema,
-  // updateStudentValidationSchema,
+  updateStudentValidationSchema,
 };

@@ -10,7 +10,7 @@ export type TGuardian = {
   motherContactNo: string;
 };
 
-export type TLocalGaurdian = {
+export type TLocalGuardian = {
   name: string;
   occupation: string;
   contactNo: string;
@@ -30,7 +30,7 @@ export type TStudent = {
   presentAddress: string;
   permanentAddress: string;
   guardian: TGuardian;
-  localGaurdian: TLocalGaurdian;
+  localGuardian: TLocalGuardian;
   isDeleted?: boolean;
 };
 

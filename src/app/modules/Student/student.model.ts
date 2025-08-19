@@ -1,10 +1,10 @@
 import { Schema, model } from 'mongoose';
 import {
   TGuardian,
-  TLocalGaurdian,
   TStudent,
   StudentMethods,
   StudentModel,
+  TLocalGuardian,
 } from './student.interface';
 import { userNameSchema } from '../../interface/user';
 
@@ -39,7 +39,7 @@ const guardianSchema = new Schema<TGuardian>({
   },
 });
 
-const localGaurdianSchema = new Schema<TLocalGaurdian>({
+const localGuardianSchema = new Schema<TLocalGuardian>({
   name: {
     type: String,
     trim: true,
@@ -110,8 +110,8 @@ const studentSchema = new Schema<TStudent, StudentModel, StudentMethods>({
     type: guardianSchema,
     required: [true, 'Guardian is required'],
   },
-  localGaurdian: {
-    type: localGaurdianSchema,
+  localGuardian: {
+    type: localGuardianSchema,
     required: [true, 'Local guardian is required'],
   },
   isDeleted: {
