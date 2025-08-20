@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { SERVICE_CATEGORIES } from './services.constant';
+import { SERVICE_CATEGORIES, serviceStatus } from './services.constant';
 
 export const createServiceValidationSchema = z.object({
   body: z.object({
@@ -7,6 +7,7 @@ export const createServiceValidationSchema = z.object({
       name: z.enum([...SERVICE_CATEGORIES] as [string, ...string[]]),
       definition: z.string(),
       description: z.string(),
+      status: z.enum([...serviceStatus] as [string, ...string[]]).optional(),
       isActive: z.boolean().optional(),
     }),
   }),

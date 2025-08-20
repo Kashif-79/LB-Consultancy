@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 import { TService } from './services.interface';
-import { SERVICE_CATEGORIES } from './services.constant';
+import { SERVICE_CATEGORIES, serviceStatus } from './services.constant';
 
 const serviceSchema = new Schema<TService>(
   {
@@ -10,6 +10,11 @@ const serviceSchema = new Schema<TService>(
     },
     description: {
       type: String,
+    },
+    status: {
+      type: String,
+      enum: serviceStatus,
+      default: 'OPEN',
     },
     isActive: {
       type: Boolean,

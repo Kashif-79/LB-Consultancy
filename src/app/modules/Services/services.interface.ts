@@ -10,5 +10,6 @@ export type TService = {
   name: TServiceCategory;
   definition: string;
   description: string;
+  status: 'OPEN' | 'BOOKED';
   isActive?: boolean;
 };

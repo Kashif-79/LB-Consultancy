@@ -8,4 +8,5 @@ export const SERVICE_CATEGORIES: TServiceCategory[] = [
   'Document Review',
   'Interview Coaching',
 ];
+export const serviceStatus = ['OPEN', 'BOOKED'];
 export const serviceSearchableFields = ['name'];
