@@ -8,9 +8,10 @@ import { USER_ROLE } from '../user/user.constant';
 const router = express.Router();
 
 router.get('/', auth(USER_ROLE.admin), AdminController.getAllAdmins);
-router.get('/:adminId', AdminController.getSingleAdmin);
+router.get('/:adminId', auth(USER_ROLE.admin), AdminController.getSingleAdmin);
 router.patch(
   '/:adminId',
+  auth(USER_ROLE.admin),
   validateRequest(adminValidations.updateAdminValidationSchema),
   AdminController.updateAdmin,
 );
