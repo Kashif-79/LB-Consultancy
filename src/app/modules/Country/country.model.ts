@@ -22,6 +22,15 @@ const countrySchema = new Schema<TCountry>(
     language: {
       type: String,
     },
+    whyStudy: {
+      type: String,
+    },
+    requirements: {
+      type: String,
+    },
+    expenses: {
+      type: String,
+    },
   },
   {
     timestamps: true,

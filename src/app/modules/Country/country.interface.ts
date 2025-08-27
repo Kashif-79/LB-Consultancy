@@ -4,4 +4,7 @@ export type TCountry = {
   continent?: string;
   currency?: string;
   language?: string;
+  whyStudy?: string;
+  requirements?: string;
+  expenses?: string;
 };

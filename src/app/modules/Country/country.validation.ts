@@ -12,6 +12,9 @@ export const createCountryValidationSchema = z.object({
       continent: z.string().optional(),
       currency: z.string().optional(),
       language: z.string().optional(),
+      whyStudy: z.string().optional(),
+      requirements: z.string().optional(),
+      expenses: z.string().optional(),
     }),
   }),
 });
