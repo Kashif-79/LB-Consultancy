@@ -34,9 +34,21 @@ const getSingleCountry = catchAsync(async (req, res) => {
     data: result,
   });
 });
+const updateCountry = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const { country } = req.body;
+  const result = await CountryService.updateCountryFromDB(id, country);
 
+  sendResponse(res, {
+    statusCode: status.OK,
+    success: true,
+    message: 'Consultant is updated successfully',
+    data: result,
+  });
+});
 export const CountryController = {
   createCountry,
   getAllCountries,
   getSingleCountry,
+  updateCountry,
 };

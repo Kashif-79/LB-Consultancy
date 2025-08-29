@@ -31,9 +31,17 @@ const getSingleCountryFromDB = async (id: string) => {
   const result = await Country.findById(id);
   return result;
 };
+const updateCountryFromDB = async (id: string, payLoad: Partial<TCountry>) => {
+  const result = await Country.findOneAndUpdate({ _id: id }, payLoad, {
+    new: true,
+    runValidators: true,
+  });
 
+  return result;
+};
 export const CountryService = {
   createCountryIntoDB,
   getAllCountriesFromDB,
   getSingleCountryFromDB,
+  updateCountryFromDB,
 };
