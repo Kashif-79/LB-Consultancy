@@ -21,5 +21,10 @@ router.patch(
   validateRequest(CountryValidation.updateCountryValidationSchema),
   CountryController.updateCountry,
 );
+router.delete(
+  '/:countryId',
+  auth(USER_ROLE.admin),
+  CountryController.deleteCountry,
+);
 
 export const CountryRoutes = router;

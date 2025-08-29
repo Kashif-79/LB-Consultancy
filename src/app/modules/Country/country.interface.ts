@@ -7,4 +7,5 @@ export type TCountry = {
   whyStudy?: string;
   requirements?: string;
   expenses?: string;
+  isDeleted?: boolean;
 };

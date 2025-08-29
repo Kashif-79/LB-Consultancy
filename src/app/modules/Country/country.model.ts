@@ -31,6 +31,10 @@ const countrySchema = new Schema<TCountry>(
     expenses: {
       type: String,
     },
+    isDeleted: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,

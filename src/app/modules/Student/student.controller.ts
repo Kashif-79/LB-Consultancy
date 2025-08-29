@@ -1,4 +1,3 @@
-import { Request, Response } from 'express';
 import { StudentServices } from './student.service';
 import sendResponse from '../../utilis/sendResponse';
 import catchAsync from '../../utilis/catchAsync';
@@ -39,8 +38,8 @@ const updateStudent = catchAsync(async (req, res) => {
 });
 
 const deleteStudent = catchAsync(async (req, res) => {
-  const { stuId } = req.params;
-  const result = await StudentServices.deleteStudentFromDB(stuId);
+  const { id } = req.params;
+  const result = await StudentServices.deleteStudentFromDB(id);
   sendResponse(res, {
     statusCode: status.OK,
     success: true,

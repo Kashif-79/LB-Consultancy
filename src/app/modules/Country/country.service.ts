@@ -32,11 +32,15 @@ const getSingleCountryFromDB = async (id: string) => {
   return result;
 };
 const updateCountryFromDB = async (id: string, payLoad: Partial<TCountry>) => {
-  const result = await Country.findOneAndUpdate({ _id: id }, payLoad, {
+  const result = await Country.findOneAndUpdate({ id }, payLoad, {
     new: true,
     runValidators: true,
   });
 
+  return result;
+};
+const deleteCountryFromDB = async (id: string) => {
+  const result = await Country.findOneAndUpdate({ id }, { isDeleted: true });
   return result;
 };
 export const CountryService = {
@@ -44,4 +48,5 @@ export const CountryService = {
   getAllCountriesFromDB,
   getSingleCountryFromDB,
   updateCountryFromDB,
+  deleteCountryFromDB,
 };
