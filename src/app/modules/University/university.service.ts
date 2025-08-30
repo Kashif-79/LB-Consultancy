@@ -30,8 +30,27 @@ const getSingleUniversityFromDB = async (id: string) => {
   const result = await University.findById(id);
   return result;
 };
+
+const updateUniversityFromDB = async (
+  id: string,
+  payLoad: Partial<TUniversity>,
+) => {
+  const result = await University.findOneAndUpdate({ id }, payLoad, {
+    new: true,
+    runValidators: true,
+  });
+
+  return result;
+};
+const deleteUniversityFromDB = async (id: string) => {
+  const result = await University.findOneAndUpdate({ id }, { isDeleted: true });
+  return result;
+};
+
 export const UniversityServices = {
   createUniversityIntoDB,
   getAllUniversitiessFromDB,
   getSingleUniversityFromDB,
+  updateUniversityFromDB,
+  deleteUniversityFromDB,
 };

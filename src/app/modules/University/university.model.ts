@@ -34,6 +34,10 @@ const universitySchema = new Schema<TUniversity>(
       required: true,
       enum: ['UG', 'PG', 'PHD', 'Diploma'],
     },
+    isDeleted: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,

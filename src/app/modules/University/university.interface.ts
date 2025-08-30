@@ -10,4 +10,5 @@ export type TUniversity = {
   admissionOpen?: boolean;
   tuitionFees?: number;
   programs: TProgrames[];
+  isDeleted?: boolean;
 };
