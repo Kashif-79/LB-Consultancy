@@ -10,12 +10,12 @@ const router = express.Router();
 
 router.get('/', auth(USER_ROLE.admin), ConsultantController.getAllConsultants);
 router.get(
-  '/:consultantId',
+  '/:id',
   auth(USER_ROLE.admin),
   ConsultantController.getSingleConsultant,
 );
 router.patch(
-  '/:consultantId',
+  '/:id',
   auth(USER_ROLE.admin),
   validateRequest(consultantValidations.updateConsultantValidationSchema),
   ConsultantController.updateConsultant,

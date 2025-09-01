@@ -14,17 +14,13 @@ router.post(
   CountryController.createCountry,
 );
 router.get('/', CountryController.getAllCountries),
-  router.get('/:countryId', CountryController.getSingleCountry);
+  router.get('/:id', CountryController.getSingleCountry);
 router.patch(
-  '/:countryId',
+  '/:id',
   auth(USER_ROLE.admin),
   validateRequest(CountryValidation.updateCountryValidationSchema),
   CountryController.updateCountry,
 );
-router.delete(
-  '/:countryId',
-  auth(USER_ROLE.admin),
-  CountryController.deleteCountry,
-);
+router.delete('/:id', auth(USER_ROLE.admin), CountryController.deleteCountry);
 
 export const CountryRoutes = router;

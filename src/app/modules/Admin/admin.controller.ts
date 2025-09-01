@@ -17,8 +17,8 @@ const getAllAdmins = catchAsync(async (req, res) => {
 });
 
 const getSingleAdmin = catchAsync(async (req, res) => {
-  const { adminId } = req.params;
-  const result = await AdminServices.getSingleAdminFromDB(adminId);
+  const { id } = req.params;
+  const result = await AdminServices.getSingleAdminFromDB(id);
 
   sendResponse(res, {
     statusCode: status.OK,
@@ -29,9 +29,9 @@ const getSingleAdmin = catchAsync(async (req, res) => {
 });
 
 const updateAdmin = catchAsync(async (req, res) => {
-  const { adminId } = req.params;
+  const { id } = req.params;
   const { admin } = req.body;
-  const result = await AdminServices.updateAdminFromDB(adminId, admin);
+  const result = await AdminServices.updateAdminFromDB(id, admin);
 
   sendResponse(res, {
     statusCode: status.OK,

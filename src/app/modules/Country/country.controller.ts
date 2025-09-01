@@ -25,8 +25,8 @@ const getAllCountries = catchAsync(async (req, res) => {
   });
 });
 const getSingleCountry = catchAsync(async (req, res) => {
-  const { countryId } = req.params;
-  const result = await CountryService.getSingleCountryFromDB(countryId);
+  const { id } = req.params;
+  const result = await CountryService.getSingleCountryFromDB(id);
   sendResponse(res, {
     statusCode: status.OK,
     success: true,

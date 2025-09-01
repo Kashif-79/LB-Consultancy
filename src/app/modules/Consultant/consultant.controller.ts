@@ -17,9 +17,8 @@ const getAllConsultants = catchAsync(async (req, res) => {
 });
 
 const getSingleConsultant = catchAsync(async (req, res) => {
-  const { consultantId } = req.params;
-  const result =
-    await ConsultantServices.getSingleConsultantFromDB(consultantId);
+  const { id } = req.params;
+  const result = await ConsultantServices.getSingleConsultantFromDB(id);
 
   sendResponse(res, {
     statusCode: status.OK,
@@ -30,10 +29,10 @@ const getSingleConsultant = catchAsync(async (req, res) => {
 });
 
 const updateConsultant = catchAsync(async (req, res) => {
-  const { consultantId } = req.params;
+  const { id } = req.params;
   const { consultant } = req.body;
   const result = await ConsultantServices.updateConsultantFromDB(
-    consultantId,
+    id,
     consultant,
   );
 
