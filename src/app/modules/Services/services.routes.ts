@@ -14,6 +14,11 @@ router.post(
   ServicesController.createServices,
 );
 router.get('/', ServicesController.getAllServices),
-  router.get('/:serviceId', ServicesController.getSingleService);
-
+  router.get('/:id', ServicesController.getSingleService);
+router.patch(
+  '/:id',
+  auth(USER_ROLE.admin),
+  validateRequest(ServiceValidation.updateServiceValidationSchema),
+  ServicesController.updateService,
+);
 export const ServicesRoutes = router;

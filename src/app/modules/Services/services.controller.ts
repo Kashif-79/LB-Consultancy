@@ -25,12 +25,24 @@ const getAllServices = catchAsync(async (req, res) => {
   });
 });
 const getSingleService = catchAsync(async (req, res) => {
-  const { serviceId } = req.params;
-  const result = await ServicesService.getSingleServiceFromDB(serviceId);
+  const { id } = req.params;
+  const result = await ServicesService.getSingleServiceFromDB(id);
   sendResponse(res, {
     statusCode: 200,
     success: true,
     message: 'Services is created successfully',
+    data: result,
+  });
+});
+const updateService = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const { service } = req.body;
+  const result = await ServicesService.updateServiceFromDB(id, service);
+
+  sendResponse(res, {
+    statusCode: status.OK,
+    success: true,
+    message: 'Service is updated successfully',
     data: result,
   });
 });
@@ -39,4 +51,5 @@ export const ServicesController = {
   createServices,
   getAllServices,
   getSingleService,
+  updateService,
 };

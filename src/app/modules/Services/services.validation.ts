@@ -13,6 +13,19 @@ export const createServiceValidationSchema = z.object({
   }),
 });
 
+export const updateServiceValidationSchema = z.object({
+  body: z.object({
+    service: z.object({
+      name: z.enum([...SERVICE_CATEGORIES] as [string, ...string[]]).optional(),
+      definition: z.string().optional(),
+      description: z.string().optional(),
+      status: z.enum([...serviceStatus] as [string, ...string[]]).optional(),
+      isActive: z.boolean().optional(),
+    }),
+  }),
+});
+
 export const ServiceValidation = {
   createServiceValidationSchema,
+  updateServiceValidationSchema,
 };
