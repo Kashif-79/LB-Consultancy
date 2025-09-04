@@ -43,7 +43,7 @@ const updateConsultantFromDB = async (
   }
 
   const result = await Consultant.findOneAndUpdate(
-    { id },
+    { _id: id },
     modifiedUpdatedData,
     {
       new: true,

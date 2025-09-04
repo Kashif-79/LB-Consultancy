@@ -7,6 +7,7 @@ export type TServiceCategory =
   | 'Interview Coaching';
 
 export type TService = {
+  _id: string;
   name: TServiceCategory;
   definition: string;
   description: string;

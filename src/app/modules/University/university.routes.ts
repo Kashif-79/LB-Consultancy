@@ -9,19 +9,20 @@ const router = express.Router();
 
 router.post(
   '/create-university',
+  auth(USER_ROLE.admin),
   validateRequest(UniversityValidaton.createUniversityValidationSchema),
   UniversityController.createUniversity,
 );
 router.get('/', UniversityController.getAllUniversities),
-  router.get('/:universityId', UniversityController.getSingleUniversity);
+  router.get('/:id', UniversityController.getSingleUniversity);
 router.patch(
-  '/:universityId',
+  '/:id',
   auth(USER_ROLE.admin),
   validateRequest(UniversityValidaton.updateUniversityValidationSchema),
   UniversityController.updateUniversity,
 );
 router.delete(
-  '/:universityId',
+  '/:id',
   auth(USER_ROLE.admin),
   UniversityController.deleteUniversity,
 );

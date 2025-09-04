@@ -43,7 +43,10 @@ const updateUniversityFromDB = async (
   return result;
 };
 const deleteUniversityFromDB = async (id: string) => {
-  const result = await University.findOneAndUpdate({ id }, { isDeleted: true });
+  const result = await University.findOneAndUpdate(
+    { _id: id },
+    { isDeleted: true },
+  );
   return result;
 };
 

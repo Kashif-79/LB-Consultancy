@@ -7,6 +7,7 @@ const serviceSchema = new Schema<TService>(
     name: SERVICE_CATEGORIES,
     definition: {
       type: String,
+      unique: true,
     },
     description: {
       type: String,

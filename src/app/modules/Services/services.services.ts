@@ -1,9 +1,16 @@
+import status from 'http-status';
 import QueryBuilder from '../../../builder/QueryBuilder';
+import AppError from '../../errors/AppErrors';
 import { serviceSearchableFields } from './services.constant';
 import { TService } from './services.interface';
 import { Service } from './services.model';
 
 const createServiceIntoDb = async (payLoad: TService) => {
+  const isExisted = await Service.findById(payLoad._id);
+  if (isExisted) {
+    throw new AppError(status.CONFLICT, 'Service already exists');
+  }
+
   const result = await Service.create(payLoad);
   return result;
 };

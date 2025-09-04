@@ -2,7 +2,6 @@ import status from 'http-status';
 import catchAsync from '../../utilis/catchAsync';
 import sendResponse from '../../utilis/sendResponse';
 import { ConsultantServices } from './consultant.service';
-import { get } from 'http';
 
 const getAllConsultants = catchAsync(async (req, res) => {
   const result = await ConsultantServices.getAllConsultantsFromDB(req.query);

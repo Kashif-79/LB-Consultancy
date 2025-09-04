@@ -25,13 +25,12 @@ const getAllUniversities = catchAsync(async (req, res) => {
   });
 });
 const getSingleUniversity = catchAsync(async (req, res) => {
-  const { universityId } = req.params;
-  const result =
-    await UniversityServices.getSingleUniversityFromDB(universityId);
+  const { id } = req.params;
+  const result = await UniversityServices.getSingleUniversityFromDB(id);
   sendResponse(res, {
     statusCode: 200,
     success: true,
-    message: 'Services is created successfully',
+    message: 'University is retrieved successfully',
     data: result,
   });
 });
