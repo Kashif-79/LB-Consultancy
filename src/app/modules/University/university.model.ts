@@ -5,8 +5,7 @@ const universitySchema = new Schema<TUniversity>(
   {
     name: {
       type: String,
-      required: true,
-      trim: true,
+      unique: true,
     },
     country: {
       type: Schema.Types.ObjectId,
@@ -14,7 +13,6 @@ const universitySchema = new Schema<TUniversity>(
     },
     website: {
       type: String,
-      required: true,
       unique: true,
     },
     ranking: {

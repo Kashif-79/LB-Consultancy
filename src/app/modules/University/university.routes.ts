@@ -1,16 +1,16 @@
 import express from 'express';
 import validateRequest from '../../middlewares/validateRequest';
-import { UniversityValidaton } from './university.validation';
 import { UniversityController } from './university.controller';
 import auth from '../../middlewares/auth';
 import { USER_ROLE } from '../user/user.constant';
+import { UniversityValidation } from './university.validation';
 
 const router = express.Router();
 
 router.post(
   '/create-university',
   auth(USER_ROLE.admin),
-  validateRequest(UniversityValidaton.createUniversityValidationSchema),
+  validateRequest(UniversityValidation.createUniversityValidationSchema),
   UniversityController.createUniversity,
 );
 router.get('/', UniversityController.getAllUniversities),
@@ -18,7 +18,7 @@ router.get('/', UniversityController.getAllUniversities),
 router.patch(
   '/:id',
   auth(USER_ROLE.admin),
-  validateRequest(UniversityValidaton.updateUniversityValidationSchema),
+  validateRequest(UniversityValidation.updateUniversityValidationSchema),
   UniversityController.updateUniversity,
 );
 router.delete(

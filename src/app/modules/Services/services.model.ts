@@ -1,10 +1,16 @@
 import { Schema, model } from 'mongoose';
 import { TService } from './services.interface';
 import { SERVICE_CATEGORIES, serviceStatus } from './services.constant';
+import { string } from 'zod';
 
 const serviceSchema = new Schema<TService>(
   {
-    name: SERVICE_CATEGORIES,
+    name: {
+      type: String,
+      enum: SERVICE_CATEGORIES,
+      required: true,
+      unique: true,
+    },
     definition: {
       type: String,
       unique: true,

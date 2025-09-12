@@ -2,50 +2,52 @@ import { z } from 'zod';
 
 export const createUniversityValidationSchema = z.object({
   body: z.object({
-    name: z
-      .string({
+    university: z.object({
+      name: z.string({
         required_error: 'University name is required',
-      })
-      .trim(),
+      }),
+      country: z.string(),
+      website: z
+        .string({
+          required_error: 'Website is required',
+        })
+        .optional(),
+      ranking: z.number().int().min(1, 'Ranking must be at least 1').optional(),
+      admissionOpen: z.boolean().default(true),
+      tuitionFees: z.number().optional(),
 
-    country: z.string(),
-
-    website: z.string({
-      required_error: 'Website is required',
+      programs: z
+        .array(z.enum(['UG', 'PG', 'PHD', 'Diploma']))
+        .min(1, 'At least one program must be selected'),
     }),
-    ranking: z.number().int().min(1, 'Ranking must be at least 1').optional(),
-    admissionOpen: z.boolean().default(true),
-    tuitionFees: z.number().optional(),
-
-    programs: z
-      .array(z.enum(['UG', 'PG', 'PHD', 'Diploma']))
-      .min(1, 'At least one program must be selected'),
   }),
 });
 export const updateUniversityValidationSchema = z.object({
   body: z.object({
-    name: z
-      .string({
-        required_error: 'University name is required',
-      })
-      .optional(),
+    university: z.object({
+      name: z
+        .string({
+          required_error: 'University name is required',
+        })
+        .optional(),
 
-    country: z.string().optional(),
+      country: z.string().optional(),
 
-    website: z
-      .string({
-        required_error: 'Website is required',
-      })
-      .optional(),
-    ranking: z.number().int().min(1, 'Ranking must be at least 1').optional(),
-    admissionOpen: z.boolean().default(true).optional(),
-    tuitionFees: z.number().optional(),
+      website: z
+        .string({
+          required_error: 'Website is required',
+        })
+        .optional(),
+      ranking: z.number().int().min(1, 'Ranking must be at least 1').optional(),
+      admissionOpen: z.boolean().default(true).optional(),
+      tuitionFees: z.number().optional(),
 
-    programs: z.array(z.enum(['UG', 'PG', 'PHD', 'Diploma'])).optional(),
+      programs: z.array(z.enum(['UG', 'PG', 'PHD', 'Diploma'])).optional(),
+    }),
   }),
 });
 
-export const UniversityValidaton = {
+export const UniversityValidation = {
   createUniversityValidationSchema,
   updateUniversityValidationSchema,
 };

@@ -6,11 +6,10 @@ import { TService } from './services.interface';
 import { Service } from './services.model';
 
 const createServiceIntoDb = async (payLoad: TService) => {
-  const isExisted = await Service.findById(payLoad._id);
-  if (isExisted) {
+  const isExist = await Service.findOne({ name: payLoad.name });
+  if (isExist) {
     throw new AppError(status.CONFLICT, 'Service already exists');
   }
-
   const result = await Service.create(payLoad);
   return result;
 };

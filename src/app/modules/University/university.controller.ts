@@ -4,8 +4,9 @@ import sendResponse from '../../utilis/sendResponse';
 import { UniversityServices } from './university.service';
 
 const createUniversity = catchAsync(async (req, res) => {
-  // const { university: universityData } = req.body;
-  const result = await UniversityServices.createUniversityIntoDB(req.body);
+  const { university: universityData } = req.body;
+  const result =
+    await UniversityServices.createUniversityIntoDB(universityData);
   sendResponse(res, {
     statusCode: status.OK,
     success: true,
