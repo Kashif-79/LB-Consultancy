@@ -1,10 +1,4 @@
-export type TServiceCategory =
-  | 'Admission'
-  | 'Visa'
-  | 'Counseling'
-  | 'Test Preparation'
-  | 'Document Review'
-  | 'Interview Coaching';
+export type TServiceCategory = 'Admission' | 'Visa' | 'Counseling';
 
 export type TService = {
   _id: string;
