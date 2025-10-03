@@ -49,7 +49,6 @@ const loginUser = async (payLoad: TLoginUser) => {
 };
 
 const refreshToken = async (token: string) => {
-  // chcek is the given token is valid
   const decoded = jwt.verify(
     token,
     config.jwt_refresh_secret as string,

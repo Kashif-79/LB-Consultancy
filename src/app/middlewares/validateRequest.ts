@@ -4,8 +4,6 @@ import catchAsync from '../utilis/catchAsync';
 
 const validateRequest = (schema: AnyZodObject) => {
   return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-    // validation
-
     await schema.parseAsync({
       body: req.body,
       cookies: req.cookies,

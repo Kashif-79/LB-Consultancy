@@ -1,7 +1,6 @@
 import { Schema, model } from 'mongoose';
 import { TService } from './services.interface';
 import { SERVICE_CATEGORIES, serviceStatus } from './services.constant';
-import { string } from 'zod';
 
 const serviceSchema = new Schema<TService>(
   {
