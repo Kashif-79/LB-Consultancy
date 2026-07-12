@@ -11,8 +11,8 @@ app.use(cookieParser());
 // app.use(cors({ origin: ['http://localhost:5173'], credentials: true }));
 
 const allowedOrigins = [
-  'http://localhost:5173', // local dev
-  'https://lb-consultancy-frontend.vercel.app', // production frontend
+  'http://localhost:5173',
+  'https://lb-consultancy-frontend.vercel.app',
 ];
 
 app.use(

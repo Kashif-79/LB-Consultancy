@@ -6,6 +6,7 @@ import { ConsultantRoutes } from '../modules/Consultant/consultant.routes';
 import { ServicesRoutes } from '../modules/Services/services.routes';
 import { CountryRoutes } from '../modules/Country/country.routes';
 import { UniversityRoutes } from '../modules/University/university.routes';
+import { ReviewRoutes } from '../modules/Review/review.routes';
 import { Authroutes } from '../modules/Auth/auth.routes';
 
 const router = Router();
@@ -38,6 +39,10 @@ const moduleRoutes = [
   {
     path: '/universities',
     route: UniversityRoutes,
+  },
+  {
+    path: '/reviews',
+    route: ReviewRoutes,
   },
   {
     path: '/auth',
